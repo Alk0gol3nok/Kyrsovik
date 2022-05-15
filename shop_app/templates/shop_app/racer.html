@@ -1,0 +1,51 @@
+{% extends 'shop_app/base.html' %}
+{% load static %}
+{% block title %} {{ racer.name }} {% endblock title %}
+{% block container %}
+    <div class="container py-md-3">
+{% endblock container %}
+
+{% block sidebar %}
+    <div class="side-bar col-lg-4">
+{% endblock sidebar %}
+
+{% block model %}
+    <div class="left-ads-display col-lg-8">
+        <div class="row">
+            <div class="desc1-left col-md-6">
+                <img src="{{ racer.image.url }}" class="img-fluid" alt="">
+            </div>
+            <div class="desc1-right col-md-6 pl-lg-4">
+                <h3 class="editContent">
+                    {{ model.title }}
+                </h3>
+                <h5 class="editContent"></h5>
+                <ul>
+                    <li>
+                        <span><b>Возраст:</b> {{ racer.age }} лет</span></li>
+                    <li>
+                        <span><b>Производитель:</b>
+                            {% for model in racer.moto_manufacturer.all %}
+                                {{ model.title }}
+                            {% endfor %}
+                        </span>
+                    </li>
+                    <li><span><b>Гонщик:</b>
+                            {% for model in racer.moto_racer.all %}
+                                {{ model.title }}
+                            {% endfor %}
+                    </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row sub-para-w3layouts mt-5">
+            <h3 class="shop-sing editContent">
+                О {{ racer.name }}
+            </h3>
+            <p class="editContent">
+                {{ racer.description|safe }}
+            </p>
+        </div>
+    </div>
+{% endblock model %}
